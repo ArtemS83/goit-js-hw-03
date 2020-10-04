@@ -1,19 +1,30 @@
-function getAllPropValues(array, prop) {
-  ('use strict');
-  // Write code under this line
-  const propValues = [];
+// function getAllPropValues(array, prop) {
+//   ('use strict');
+//   // Write code under this line
+//   const propValues = [];
 
-  for (const arr of array) {
-    for (const key in arr) {
-      if (key === prop) {
-        propValues.push(arr[key]);
-      }
+//   for (const arr of array) {
+//     for (const key in arr) {
+//       if (key === prop) {
+//         propValues.push(arr[key]);
+//       }
+//     }
+//   }
+
+//   return propValues;
+// }
+function getAllPropValues(array, prop) {
+  'use strict';
+  // Write code under this line
+  const arrayProp = [];
+  for (let i = 0; i < array.length; i += 1) {
+    if (prop in array[i]) {
+      //console.log(array[i][prop]);
+      arrayProp.push(array[i][prop]);
     }
   }
-
-  return propValues;
+  return arrayProp;
 }
-
 // Объекты и ожидаемый результат
 const products = [
   { name: 'Радар', price: 1300, quantity: 4 },
