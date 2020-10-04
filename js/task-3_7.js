@@ -149,29 +149,30 @@ const account = {
   getBalance() {
     return this.balance;
   },
-  // getTransactionDetails(id) {
-  //   for (let i = 0; i < this.transactions.length; i += 1) {
-  //     if (this.transactions[i].id === id) {
-  //       return this.transactions[i];
-  //     } else {
-  //       console.log(`Такого id: ${id} не обнаружено!`);
-  //       return;
-  //     }
-  //   }
-  // },
+
   getTransactionDetails(id) {
-    for (let i = 0; i < this.transactions.length; i += 1) {
-      if (this.transactions[i].id === id) {
-        return this.transactions[i];
+    for (const transaction of this.transactions) {
+      if (transaction.id === id) {
+        return transaction;
       }
     }
+    // for (let i = 0; i < this.transactions.length; i += 1) {
+    //   if (this.transactions[i].id === id) {
+    //     return this.transactions[i];
+    //   }
+    // }
     return `Такого id: ${id} не обнаружено!`;
   },
   getTransactionTotal(type) {
     let total = 0;
-    for (let i = 0; i < this.transactions.length; i += 1) {
-      if (this.transactions[i].type === type) {
-        total += this.transactions[i].amount;
+    // for (let i = 0; i < this.transactions.length; i += 1) {
+    //   if (this.transactions[i].type === type) {
+    //     total += this.transactions[i].amount;
+    //   }
+    // }
+    for (const transaction of this.transactions) {
+      if (transaction.type === type) {
+        total += transaction.amount;
       }
     }
     return total;
@@ -191,7 +192,6 @@ console.log(account.transactions);
 console.log(account.getBalance());
 console.log(account.getTransactionDetails(3));
 console.log(account.getTransactionDetails(10));
-// account.getTransactionDetails(100);
-// account.deposit(400);
-// console.log(account.getTransactionTotal(Transaction.DEPOSIT));
-// console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+account.deposit(400);
+console.log(account.getTransactionTotal(Transaction.DEPOSIT));
+console.log(account.getTransactionTotal(Transaction.WITHDRAW));
